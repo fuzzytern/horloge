@@ -6,16 +6,15 @@
 const horloge = require('commander');
 
 /**
- * Methods 
+ * Methods
  */
 const runInterval = function (duration, interval = 60000) {
   console.log(`${duration}mn left`);
   if (duration === 0) {
     console.log("Time's up");
   } else {
-    // calls a copy of runInterval recursively with the updated parameters
-    setTimeout(runInterval.bind(null, duration - 1, interval),
-               interval);
+    // calls runInterval after interval is elapsed with the updated parameters
+    setTimeout(runInterval, interval, duration - 1, interval);
   }
 };
 
